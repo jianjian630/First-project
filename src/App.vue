@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    APP vue
+
+    <!-- 一级路由组件现实的位置 -->
+    <router-view></router-view>
   </div>
 </template>
 
