@@ -6,7 +6,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 // index  的含义是索引文件
 
 // @ 是 vue-cli 提供的一个绝对路径的别名
-import router from './router'
+import router from '@/router'
+// import axios from 'axios'
+import axios from '@/api'
+Vue.prototype.$http = axios
 
 Vue.use(ElementUI)
 
