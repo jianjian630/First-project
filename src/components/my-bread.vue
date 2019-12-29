@@ -1,0 +1,19 @@
+<template>
+<!-- 封装面包屑 -->
+  <el-breadcrumb separator-class="el-icon-arrow-right">
+    <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+    <el-breadcrumb-item>
+      <slot></slot>
+    </el-breadcrumb-item>
+  </el-breadcrumb>
+</template>
+
+<script>
+export default {
+  // 插件名
+  name: 'my-bread'
+}
+</script>
+
+<style lang="less" scoped>
+</style>

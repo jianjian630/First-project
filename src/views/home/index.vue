@@ -117,6 +117,9 @@ export default {
       background: #002244  url(../../assets/logo_admin_01.png) no-repeat center;
       background-size: 36px auto;
     }
+    .el-menu{
+      border-right: 0
+    }
   }
   .el-header {
     border-bottom: 1px solid #ddd;
