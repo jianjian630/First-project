@@ -35,10 +35,12 @@
             range-separator="至"
             start-placeholder="开始日期"
             end-placeholder="结束日期"
+            @change="changeDate"
+            value-format="yyyy-MM-dd"
           ></el-date-picker>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" size="small">筛选</el-button>
+          <el-button type="primary" @click="search()" size="small">筛选</el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -66,9 +68,9 @@
         </el-table-column>
         <el-table-column prop="pubdate" label="发布时间"></el-table-column>
         <el-table-column label="操作" width="120px">
-          <template>
-            <el-button type="primary" plain icon="el-icon-edit" circle></el-button>
-            <el-button type="danger" plain icon="el-icon-delete" circle></el-button>
+          <template slot-scope="scope">
+            <el-button type="primary" @click="toEdit(scope.row.id)" plain icon="el-icon-edit" circle></el-button>
+            <el-button type="danger" @click="delArticle(scope.row.id)" plain icon="el-icon-delete" circle></el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -162,9 +164,26 @@ export default {
     },
     // 搜索
     search () {
+      // 每次搜索的时候页码更改为 1
       this.filterParams.page = 1
       this.getArticles()
+    },
+    // 删除文章
+    async delArticle (articleId) {
+      try {
+        await this.$http.delete(`articles/${articleId}`)
+        this.$message.success('删除成功')
+        this.getArticles()
+      } catch (e) {
+        console.log(e)
+        this.$message.error('删除失败')
+      }
+    },
+    // 编辑 ， 地址栏传参跳转  跳转到发布文章
+    toEdit (articleId) {
+      this.$router.push(`/publish?id=${articleId}`)
     }
+
   }
 }
 </script>

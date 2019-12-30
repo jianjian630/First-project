@@ -1,9 +1,14 @@
 <template>
-  <div>image</div>
+  <div>
+    <el-card>
+      <my-bread>修改文章</my-bread>
+    </el-card>
+  </div>
 </template>
 
 <script>
 export default {
+
 }
 </script>
 
